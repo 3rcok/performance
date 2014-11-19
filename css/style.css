@@ -39,7 +39,7 @@ h3 { margin-top: 0; font-weight: 100;}
 footer { background-color: #fff; margin-top: 2%; padding-left: 9%; padding-right: 9%;  }
 footer span { float: right; font-style: italic; }
 .footer { padding-top: 1%; }
-.caption { text-align: left; padding-left: 9%; }
+.caption { text-align: left; padding-left: 13%; }
 
 /* Smartphones (portrait) */
 @media only screen and (max-width: 480px) {
