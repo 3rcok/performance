@@ -6,8 +6,6 @@
     <meta name="description" content="Portfolio">
     <meta name="author" content="Cornelia Schulz">
     <title>Cornelia Schulz: Portfolio</title>
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet" media="print">
 </head>
 
 <body>
@@ -19,7 +17,7 @@
             <div class="col-md-4 pull-down brand">
                 <h2>Cornelia Schulz</h2>
             </div>
-            <div class="col-md-4 right pull-down"><button class="btn btn-primary"><a class="index-link" href="index.html">Portfolio</a></button> | <button class="btn btn-primary"><a class="index-link" href="contact.html">Contact</a></button> | <button class="btn btn-primary"><a class="index-link" href="http://firzhugh.github.io/resume/" target="_blank">Resume</a></button></div>
+            <div class="col-md-4 right pull-down"><div class="btn btn-primary"><a class="index-link" href="index.html">Portfolio</a></div> | <div class="btn btn-primary"><a class="index-link" href="contact.html">Contact</a></div> | <div class="btn btn-primary"><a class="index-link" href="http://firzhugh.github.io/resume/" target="_blank">Resume</a></div></div>
         </div>
     </header>
 
@@ -37,15 +35,27 @@
     </footer>
 </div>
 <script>
-    var cb = function() {
-        var l = document.createElement('link'); l.rel = 'stylesheet';
-        l.href = 'css/bootstrap.min.css';
-        var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-    };
+    var links = ['css/bootstrap.min.css', 'css/style.css'];
+    for(var i = 0; i < links.length; i++){
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = links[i];
+        var h = document.getElementsByTagName('head')[0];
+        h.parentNode.insertBefore(l, h);
+    }
     var raf = requestAnimationFrame || mozRequestAnimationFrame ||
             webkitRequestAnimationFrame || msRequestAnimationFrame;
     if (raf) raf(cb);
     else window.addEventListener('load', cb);
+</script>
+<script>
+    function logCRP(){
+        var e=window.performance.timing,
+                t=e.domContentLoadedEventStart-e.domLoading,
+                n=e.domComplete-e.domLoading;var r=document.getElementById("crp-stats");
+        r.textContent="DCL: "+t+"ms, onload: "+n+"ms"}
+    window.addEventListener("load",function(e){logCRP()
+    })
 </script>
 <script>
     (function(w,g){w['GoogleAnalyticsObject']=g;
@@ -56,6 +66,5 @@
     ga('send', 'pageview');
 </script>
 <script src="http://www.google-analytics.com/analytics.js"></script>
-<script async src="js/perfmatters.js"></script>
 </body>
 </html>

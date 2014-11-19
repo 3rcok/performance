@@ -17,7 +17,7 @@
               <div class="col-md-4 pull-down brand">
                   <h2>Cornelia Schulz</h2>
               </div>
-              <div class="col-md-4 right pull-down"><button class="btn btn-primary"><a class="index-link" href="index.html">Portfolio</a></button> | <button class="btn btn-primary"><a class="index-link" href="contact.html">Contact</a></button> | <button class="btn btn-primary"><a class="index-link" href="http://firzhugh.github.io/resume/" target="_blank">Resume</a></button></div>
+              <div class="col-md-4 right pull-down"><div class="btn btn-primary"><a class="index-link" href="index.html">Portfolio</a></div> | <div class="btn btn-primary"><a class="index-link" href="contact.html">Contact</a></div> | <div class="btn btn-primary"><a class="index-link" href="http://firzhugh.github.io/resume/" target="_blank">Resume</a></div></div>
           </div>
       </header>
 
@@ -99,14 +99,21 @@
   <script>
       $(document).ready(function(){
           var e=$(".portfolio");
-          e.mouseenter(function(){$(this).children(".portfolio-image").animate({
+          e.mouseenter(function(){
+              $(".portfolio-image", this).animate({
               opacity:.25},100);
-              $(this).children(".portfolio-link").css("color","gray")
+              $(".portfolio-link", this).css({
+                  "color":"gray",
+                  "font-weight": "200"
+              })
           });
           e.mouseleave(function(){
-              $(this).children(".portfolio-image").animate({
+              $(".portfolio-image", this).animate({
                   opacity:1},100);
-              $(this).children(".portfolio-link").css("color","#fff")
+              $("h3", this).css({
+                  "color":"#fff",
+                  "font-weight": "100"
+              })
           })
       })
   </script>
