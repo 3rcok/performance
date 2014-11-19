@@ -6,8 +6,6 @@
     <meta name="description" content="Portfolio">
     <meta name="author" content="Cornelia Schulz">
     <title>Cornelia Schulz: Portfolio</title>
-
-    <link href="css/print.css" rel="stylesheet" media="print">
   </head>
 
   <body>
@@ -15,7 +13,7 @@
       <header>
           <div class="row">
               <div class="col-md-2">
-                  <a href="index.html"> <img src="img/logo.png" width="50px"></a></div>
+                  <a href="index.html"> <img src="img/logo.png"></a></div>
               <div class="col-md-4 pull-down brand">
                   <h2>Cornelia Schulz</h2>
               </div>
@@ -74,30 +72,44 @@
       </footer>
   </div>
   <script>
-      var cb = function() {
-          var l = document.createElement('link'); l.rel = 'stylesheet';
-          l.href = 'css/bootstrap.min.css';
-          var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-      };
+      var links = ['css/bootstrap.min.css', 'css/style.css'];
+      for(var i = 0; i < links.length; i++){
+          var l = document.createElement('link');
+          l.rel = 'stylesheet';
+          l.href = links[i];
+          var h = document.getElementsByTagName('head')[0];
+          h.parentNode.insertBefore(l, h);
+      }
       var raf = requestAnimationFrame || mozRequestAnimationFrame ||
               webkitRequestAnimationFrame || msRequestAnimationFrame;
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
+  </script>
+  <script async src="http://www.google-analytics.com/analytics.js"></script>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script>
+      function logCRP(){
+          var e=window.performance.timing,
+                  t=e.domContentLoadedEventStart-e.domLoading,
+                  n=e.domComplete-e.domLoading;var r=document.getElementById("crp-stats");
+          r.textContent="DCL: "+t+"ms, onload: "+n+"ms"}
+      window.addEventListener("load",function(e){logCRP()
+      })
   </script>
   <script>
-      var cb = function() {
-          var l = document.createElement('link'); l.rel = 'stylesheet';
-          l.href = 'css/style.css';
-          var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-              webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
+      $(document).ready(function(){
+          var e=$(".portfolio");
+          e.mouseenter(function(){$(this).children(".portfolio-image").animate({
+              opacity:.25},100);
+              $(this).children(".portfolio-link").css("color","gray")
+          });
+          e.mouseleave(function(){
+              $(this).children(".portfolio-image").animate({
+                  opacity:1},100);
+              $(this).children(".portfolio-link").css("color","#fff")
+          })
+      })
   </script>
-
-  <script async src="http://www.google-analytics.com/analytics.js"></script>
-  <script async src="js/perfmatters.js"></script>
   <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
           w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
@@ -106,7 +118,6 @@
       ga('create', 'UA-XXXX-Y');
       ga('send', 'pageview');
   </script>
-  <script src="js/jquery-1.11.1.min.js"></script>
-  <script src="js/hover.js"></script>
+
  </body>
 </html>
