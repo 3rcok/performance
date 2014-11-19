@@ -6,6 +6,7 @@
     <meta name="description" content="Portfolio">
     <meta name="author" content="Cornelia Schulz">
     <title>Cornelia Schulz: Portfolio</title>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/print.css" rel="stylesheet" media="print">
   </head>
@@ -76,6 +77,17 @@
   <script>
       var cb = function() {
           var l = document.createElement('link'); l.rel = 'stylesheet';
+          l.href = 'css/style.css';
+          var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+              webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(cb);
+      else window.addEventListener('load', cb);
+  </script>
+  <script>
+      var cb = function() {
+          var l = document.createElement('link'); l.rel = 'stylesheet';
           l.href = 'css/bootstrap.min.css';
           var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
       };
@@ -84,7 +96,7 @@
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
   </script>
-  <script src="http://www.google-analytics.com/analytics.js"></script>
+  <script async src="http://www.google-analytics.com/analytics.js"></script>
   <script async src="js/perfmatters.js"></script>
   <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
@@ -95,6 +107,6 @@
       ga('send', 'pageview');
   </script>
   <script src="js/jquery-1.11.1.min.js"></script>
-  <script async src="js/hover.js"></script>
+  <script src="js/hover.js"></script>
  </body>
 </html>
